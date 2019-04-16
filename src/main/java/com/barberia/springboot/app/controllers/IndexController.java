@@ -11,7 +11,7 @@ public class IndexController {
 	@GetMapping("/")
 	public String hola(Model model) {
 		String mensaje="Proyecto Semestral";
-		model.addAttribute("mensaje",mensaje);
+		model.addAttribute("mensaje2",mensaje);
 		return "index";
 	}
 	
