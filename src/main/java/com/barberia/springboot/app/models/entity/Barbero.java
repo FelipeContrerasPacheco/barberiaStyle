@@ -1,20 +1,8 @@
 package com.barberia.springboot.app.models.entity;
 
 import javax.persistence.Entity;
-<<<<<<< HEAD
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-@Entity
-@Table(name="barberos")
-public class Barbero {
-	
-	@Id
-	private Long id;
-	
-	private String nombre;
-	
-=======
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -93,5 +81,4 @@ public class Barbero {
 	public String toString() {
 		return  nombre + " " + apellido;
 	}
->>>>>>> branch 'alvaro' of https://github.com/FelipeContrerasPacheco/barberiaStyle.git
 }
