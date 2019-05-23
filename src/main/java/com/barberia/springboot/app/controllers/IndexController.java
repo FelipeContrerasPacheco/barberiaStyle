@@ -9,7 +9,11 @@ public class IndexController {
 	
 	@GetMapping("/")
 	public String hola(Model model) {
+<<<<<<< HEAD
 		String mensaje="Proyecto Semestral de gestion";
+=======
+		String mensaje="Proyecto Semestral holla";
+>>>>>>> branch 'alvaro' of https://github.com/FelipeContrerasPacheco/barberiaStyle.git
 		model.addAttribute("mensaje",mensaje);
 		return "index";
 	}
