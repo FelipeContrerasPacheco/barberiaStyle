@@ -17,62 +17,62 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.barberia.springboot.app.models.entity.Barbero;
-import com.barberia.springboot.app.models.service.IBarberoService;
+import com.barberia.springboot.app.models.entity.Cliente;
+import com.barberia.springboot.app.models.service.IClienteService;
 
 @Controller 
-@SessionAttributes("barbero")
-public class barberoController {
+@SessionAttributes("cliente")
+public class clienteController {
 	
 	@Autowired
-	private IBarberoService barberoService;
+	private IClienteService clienteService;
  
 	@GetMapping(value = "/listar")
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de barberos");
-		model.addAttribute("barberos", barberoService.findAll());
+		model.addAttribute("cliente", clienteService.findAll());
 		return "listar";
 	}
 
 	@GetMapping(value = "/form")
 	public String crear(Map<String, Object> model) {
 
-		Barbero barbero = new Barbero();
-		model.put("barbero", barbero);
-		model.put("titulo", "Crear barbero");
+		Cliente cliente = new Cliente();
+		model.put("cliente", cliente);
+		model.put("titulo", "Crear cliente");
 		return "form";
 	}
 	
 	@PutMapping(value="/form/{id}")
 	public String editar(@PathVariable(value="id") Long id, Map<String, Object> model, RedirectAttributes flash) {
 		
-		Barbero barbero = null;
+		Cliente cliente = null;
 		
 		if(id > 0) {
-			barbero = barberoService.findOne(id);
-			if(barbero == null) {
-				flash.addFlashAttribute("error", "El ID del barbero no existe en la BBDD!");
+			cliente = clienteService.findOne(id);
+			if(cliente == null) {
+				flash.addFlashAttribute("error", "El ID del cliente no existe en la BBDD!");
 				return "redirect:/listar";
 			}
 		} else {
-			flash.addFlashAttribute("error", "El ID del barbero no puede ser cero!");
+			flash.addFlashAttribute("error", "El ID del cliente no puede ser cero!");
 			return "redirect:/listar";
 		}
-		model.put("barbero", barbero);
-		model.put("titulo", "Editar Barbero");
+		model.put("cliente", cliente);
+		model.put("titulo", "Editar Cliente");
 		return "form";
 	}
 
 	@PostMapping(value = "/form")
-	public String guardar(@Valid Barbero barbero, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status) {
+	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status) {
 
 		if (result.hasErrors()) {
-			model.addAttribute("titulo", "Formulario de Barbero");
+			model.addAttribute("titulo", "Formulario de Cliente");
 			return "form";
 		}
-		String mensajeFlash = (barbero.getId() != null)? "Barbero editado con éxito!" : "Barbero creado con éxito!";
+		String mensajeFlash = (cliente.getId() != null)? "Cliente editado con éxito!" : "Cliente creado con éxito!";
 
-		barberoService.save(barbero);
+		clienteService.save(cliente);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
 		return "redirect:listar";
@@ -82,8 +82,8 @@ public class barberoController {
 	public String eliminar(@PathVariable(value="id") Long id, RedirectAttributes flash) {
 		
 		if(id > 0) {
-			barberoService.delete(id);
-			flash.addFlashAttribute("success", "Barbero eliminado con éxito!");
+			clienteService.delete(id);
+			flash.addFlashAttribute("success", "Cliente eliminado con éxito!");
 		}
 		return "redirect:/listar";
 	}
