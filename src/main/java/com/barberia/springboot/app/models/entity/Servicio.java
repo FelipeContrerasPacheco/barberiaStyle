@@ -1,5 +1,6 @@
 package com.barberia.springboot.app.models.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,10 +13,13 @@ public class Servicio {
 	@Id
 	private Long id;
 	@NotEmpty
+	@Column(name = "nombre")
 	private String nombre;
 	@NotEmpty
+	@Column(name = "Duracion")
 	private Integer Duracion;
 	@NotEmpty
+	@Column(name = "Precio")
 	private Integer Precio;
 	
 	public Servicio() {
