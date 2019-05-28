@@ -13,22 +13,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport">
 <link rel="stylesheet"
-	href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
 <!-- Font Awesome -->
 <link rel="stylesheet"
-	href="bower_components/font-awesome/css/font-awesome.min.css">
+	th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}">
 <!-- Ionicons -->
 <link rel="stylesheet"
-	href="bower_components/Ionicons/css/ionicons.min.css">
+	th:href="@{/bower_components/Ionicons/css/ionicons.min.css}">
 <!-- Theme style -->
-<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+<link rel="stylesheet" th:href="@{/dist/css/AdminLTE.min.css}">
 <!-- DataTables -->
 <link rel="stylesheet"
-	href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+	th:href="@{/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css}">
 <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
-<link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+<link rel="stylesheet" th:href="@{/dist/css/skins/skin-blue.min.css}">
+<link href="/toastr.min.css" rel="stylesheet" />
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +40,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- Google Font -->
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic}">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -72,13 +73,8 @@ desired effect
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-				<h1>
-					Page Header <small>Optional description</small>
-				</h1>
-				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-					<li class="active">Here</li>
-				</ol>
+				<h1 th:text="${titulo}"></h1>
+
 			</section>
 
 			<!-- Main content -->
@@ -89,7 +85,10 @@ desired effect
 						<div class="col-xs-12">
 							<div class="box">
 								<div class="box-header">
-									<h3 class="box-title">Data Table With Full Features</h3>
+									<h3 class="box-title"></h3>
+									<a th:href="@{/barbero/form}"
+										class="btn bg-orange btn-flat margin btn-xl pull-right"
+										th:text="#{text.barbero.crear}"></a>
 								</div>
 								<!-- /.box-header -->
 								<div class="box-body">
@@ -100,19 +99,26 @@ desired effect
 												<th>Nombre</th>
 												<th>Apellido</th>
 												<th>Email</th>
+												<th>Teléfono</th>
 												<th>Acciones</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="cliente: ${clientes}">
-												<td th:text="${cliente.id}"></td>
-												<td th:text="${cliente.nombre}"></td>
-												<td th:text="${cliente.apellido}"></td>
-												<td th:text="${cliente.email}"></td>
-												<td></td>
+											<tr th:each="barbero: ${barberos}">
+												<td th:text="${barbero.id}"></td>
+												<td th:text="${barbero.nombre}"></td>
+												<td th:text="${barbero.apellido}"></td>
+												<td th:text="${barbero.email}"></td>
+												<td th:text="${barbero.telefono}"></td>
+												<td><a class="btn bg-navy btn-flat margin"
+													th:href="@{/barbero/form/} + ${barbero.id}"
+													th:text="#{text.barbero.editar}"></a> <a
+													class="btn bg-maroon btn-flat margin"
+													th:href="@{/barbero/eliminar/} + ${barbero.id}"
+													th:text="#{text.barbero.eliminar}"
+													onclick="return confirm('¿Estás seguro que quieres eliminar el barbero?');"></a>
+												</td>
 											</tr>
-
-
 										</tbody>
 										<tfoot>
 											<tr>
@@ -134,28 +140,30 @@ desired effect
 					<!-- /.row -->
 				</section>
 				<!-- /.content -->
+
+			</section>
 		</div>
-		</section>
 		<!-- /.content -->
 		<footer th:replace="layout/layout :: footer"></footer>
 	</div>
 	<!-- /.content-wrapper -->
-	</div>
 	<!-- ./wrapper -->
 
 	<!-- REQUIRED JS SCRIPTS -->
 
 	<!-- jQuery 3 -->
-	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
 	<!-- Bootstrap 3.3.7 -->
-	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script
+		th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
 	<!-- AdminLTE App -->
-	<script src="dist/js/adminlte.min.js"></script>
+	<script th:src="@{/dist/js/adminlte.min.js}"></script>
 	<!-- DataTables -->
 	<script
-		src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+		th:src="@{/bower_components/datatables.net/js/jquery.dataTables.min.js}"></script>
 	<script
-		src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+		th:src="@{/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js}"></script>
+	<script src="/toastr.min.js"></script>
 	<script>
 		$(function() {
 			$('#example1').DataTable({
@@ -188,6 +196,25 @@ desired effect
 			}
 		}
 	</script>
+
+	<script th:inline="javascript">
+                var success = [[${success}]];
+                if (success != null) {
+                    toastr.success(success, 'Mensaje:', {"closeButton": true, positionClass: 'toast-bottom-right'});
+                }
+                var error = [[${error}]];
+                if (error != null) {
+                    toastr.error(error, 'Mensaje:', {"closeButton": true, positionClass: 'toast-bottom-right'});
+                }
+                var info = [[${info}]];
+                if (info != null) {
+                    toastr.info(info, 'Mensaje:', {"closeButton": true, positionClass: 'toast-bottom-right'});
+                }
+                var warning = [[${warning}]];
+                if (warning != null) {
+                    toastr.warning(warning, 'Mensaje:', {"closeButton": true, positionClass: 'toast-bottom-right'});
+                }
+            </script>
 	<!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
