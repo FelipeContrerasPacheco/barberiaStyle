@@ -23,7 +23,7 @@ import com.barberia.springboot.app.models.service.IClienteService;
 
 @Controller 
 @SessionAttributes("cliente")
-@RequestMapping("/cliente")
+@RequestMapping("value = /cliente")
 public class clienteController {
 	
 	@Autowired
