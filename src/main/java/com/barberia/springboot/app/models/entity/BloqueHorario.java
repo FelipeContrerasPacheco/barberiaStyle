@@ -14,7 +14,7 @@ public class BloqueHorario implements Serializable {
 	// Declaración de Atributos
 	@Id
 	@Column(name="idBloque")
-	private long idBloque;
+	private Long idBloque;
 	@Column(name="horaInicio")
 	private String horaInicio;
 	@Column (name="horaFin")
@@ -26,7 +26,7 @@ public class BloqueHorario implements Serializable {
 
 	}
 
-	public BloqueHorario(long idBloque, String horaInicio, String horaFin) {
+	public BloqueHorario(Long idBloque, String horaInicio, String horaFin) {
 		this.idBloque = idBloque;
 		this.horaInicio = horaInicio;
 		this.horaFin = horaFin;
@@ -34,11 +34,11 @@ public class BloqueHorario implements Serializable {
 
 	// Getters N Setters
 
-	public long getIdBloque() {
+	public Long getIdBloque() {
 		return idBloque;
 	}
 
-	public void setIdBloque(long idBloque) {
+	public void setIdBloque(Long idBloque) {
 		this.idBloque = idBloque;
 	}
 
