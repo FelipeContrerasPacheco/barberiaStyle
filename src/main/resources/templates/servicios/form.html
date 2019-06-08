@@ -3,11 +3,10 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 <title>Style</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
@@ -31,7 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect. -->
 <link rel="stylesheet" th:href="@{/dist/css/skins/skin-blue.min.css}">
 <link href="/toastr.min.css" rel="stylesheet" />
-
+<link rel="icon" type="image/jpg" href="/dist/img/icon.jpg">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -42,7 +41,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Google Font -->
 <link rel="stylesheet"
 	th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic}">
-<link rel="icon" type="image/jpg" href="/dist/img/icon.jpg">
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -88,13 +87,13 @@ desired effect
 							<div class="box">
 								<div class="box-header">
 									<h3 class="box-title"></h3>
-									<a th:href="@{/barbero/listar}"
+									<a th:href="@{/servicios/listar}"
 										class="btn bg-orange btn-flat margin btn-xl float-right"
 										th:text="'Volver'"></a>
 								</div>
 								<!-- /.box-header -->
 								<div class="box-body">
-									<form th:action="@{/barbero/form}" th:object="${barbero}" method="post">
+									<form th:action="@{/servicios/form}" th:object="${servicio}" method="post">
 										<div class="form-group row">
 											<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
 											<div class="col-sm-6">
@@ -106,33 +105,24 @@ desired effect
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+											<label for="duracion" class="col-sm-2 col-form-label">Duracion</label>
 											<div class="col-sm-6">
-												<input type="text" th:field="*{apellido}"
+												<input type="text" th:field="*{duracion}"
 													class="form-control"
 													th:errorclass="'form-control alert-danger'" /> <small
 													class="form-text text-danger"
-													th:if="${#fields.hasErrors('apellido')}"
-													th:errors="*{apellido}"></small>
+													th:if="${#fields.hasErrors('duracion')}"
+													th:errors="*{duracion}"></small>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="email" class="col-sm-2 col-form-label">Email</label>
+											<label for="precio" class="col-sm-2 col-form-label">Precio</label>
 											<div class="col-sm-6">
-												<input type="text" th:field="*{email}" class="form-control"
+												<input type="text" th:field="*{precio}" class="form-control"
 													th:errorclass="'form-control alert-danger'" /> <small
 													class="form-text text-danger"
-													th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
-											</div>
-										</div>
-										
-										<div class="form-group row">
-											<label for="telefono" class="col-sm-2 col-form-label">Teléfono</label>
-											<div class="col-sm-6">
-												<input type="text" th:field="*{telefono}" class="form-control"
-													th:errorclass="'form-control alert-danger'" /> <small
-													class="form-text text-danger"
-													th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+													th:if="${#fields.hasErrors('precio')}"
+													th:errors="*{precio}"></small>
 											</div>
 										</div>
 										<div class="form-group row">
@@ -141,6 +131,7 @@ desired effect
 													class="btn bg-olive btn-flat margin" />
 											</div>
 										</div>
+										
 									</form>
 								</div>
 								<!-- /.box-body -->
