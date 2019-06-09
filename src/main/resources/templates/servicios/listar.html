@@ -100,7 +100,7 @@ desired effect
 												<tr>
 													<th>Id</th>
 													<th>Nombre</th>
-													<th>Duracion</th>
+													<th>Duración</th>
 													<th>Precio</th>
 													<th>Acciones</th>
 												</tr>
@@ -113,10 +113,10 @@ desired effect
 													<td th:text="${servicio.precio}"></td>
 													<td><a class="btn bg-orange btn-flat margin"
 														th:href="@{/servicios/form/} + ${servicio.id}"
-														th:text="#{text.servi.editar}"></a> <a
+														th:text="'Editar'"></a> <a
 														class="btn bg-maroon btn-flat margin"
 														th:href="@{/servicios/eliminar/} + ${servicio.id}"
-														th:text="#{text.servi.eliminar}"
+														th:text="'Eliminar'"
 														onclick="return confirm('¿Estás seguro que quieres eliminar el servicio?');"></a>
 													</td>
 												</tr>
@@ -125,7 +125,7 @@ desired effect
 												<tr>
 													<th>Id</th>
 													<th>Nombre</th>
-													<th>Duracion</th>
+													<th>Duración</th>
 													<th>Precio</th>
 													<th>Acciones</th>
 												</tr>

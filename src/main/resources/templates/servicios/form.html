@@ -95,7 +95,7 @@ desired effect
 								<div class="box-body">
 									<form th:action="@{/servicios/form}" th:object="${servicio}" method="post">
 										<div class="form-group row">
-											<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+											<label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
 											<div class="col-sm-6">
 												<input type="text" th:field="*{nombre}" class="form-control"
 													th:errorclass="'form-control alert-danger'" /> <small
@@ -105,7 +105,7 @@ desired effect
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="duracion" class="col-sm-2 col-form-label">Duracion</label>
+											<label for="duracion" class="col-sm-2 col-form-label">Duración:</label>
 											<div class="col-sm-6">
 												<input type="text" th:field="*{duracion}"
 													class="form-control"
@@ -116,7 +116,7 @@ desired effect
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="precio" class="col-sm-2 col-form-label">Precio</label>
+											<label for="precio" class="col-sm-2 col-form-label">Precio:</label>
 											<div class="col-sm-6">
 												<input type="text" th:field="*{precio}" class="form-control"
 													th:errorclass="'form-control alert-danger'" /> <small
