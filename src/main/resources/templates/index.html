@@ -62,10 +62,12 @@
 					<li sec:authorize="isAuthenticated()">
 						<!-- <script type="text/javascript">
 	               window.location = "/barbero/listar";
-	          </script>--> <a th:href="@{/barbero/listar}"
+	          </script>--> <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/barbero/listar}"
+						class="btn btn-primary py-3 px-5">Ir a la Gestión de la Barbería Style</a>
+						
+						<a sec:authorize="hasRole('ROLE_USER')" th:href="@{/cliente/listar}"
 						class="btn btn-primary py-3 px-5">Ir a la Gestión de la Barbería Style</a>
 					</li>
-
 					<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}"
 						class="btn btn-primary py-3 px-5">Iniciar Sesión</a></li>
 				</ul>

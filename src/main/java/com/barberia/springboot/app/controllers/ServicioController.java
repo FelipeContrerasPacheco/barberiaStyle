@@ -36,7 +36,7 @@ public class ServicioController {
 	 //listar servicios
 		@GetMapping(value ="/listar")
 		public String listar(Model model) {
-			model.addAttribute("titulo", "Listado de servicio");
+			model.addAttribute("titulo", "Listado de servicios");
 			model.addAttribute("servicio", servicioService.findAll());
 			return "servicios/listar";
 		}
